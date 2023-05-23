@@ -218,7 +218,7 @@ def convert_variants_trace_idx_to_trace_obj(log, variants_trace_idx):
 
     return variants
 
-def get_variants_sorted_by_pourc(variants):
+def get_variants_sorted_by_perc(variants):
     """
     From the dictionary of variants returns an ordered list of variants
     along with their pourcentage
@@ -230,11 +230,9 @@ def get_variants_sorted_by_pourc(variants):
 
     Returns
     ----------
-    var_pourc
-        List of variant names along with their pourcentage
-    """
-    var_pourc = []
+    
+    var_perc = []
     for variant in variants:
-        var_pourc.append([variant, round(len(variants[variant])/len(log)*100,2)])
-    var_pourc = sorted(var_pourc, key=lambda x: (x[1], x[0]), reverse=True)
-    return var_pourc
+        var_perc.append([variant, round(len(variants[variant])/len(log)*100,2)])
+    var_perc = sorted(var_perc, key=lambda x: (x[1], x[0]), reverse=True)
+    return var_perc
