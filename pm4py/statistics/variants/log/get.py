@@ -217,3 +217,24 @@ def convert_variants_trace_idx_to_trace_obj(log, variants_trace_idx):
             variants[key].append(log[value])
 
     return variants
+
+def get_variants_sorted_by_pourc(variants):
+    """
+    From the dictionary of variants returns an ordered list of variants
+    along with their pourcentage
+
+    Parameters
+    ----------
+    variants
+        Dictionary with variant as the key and the list of traces as the value
+
+    Returns
+    ----------
+    var_pourc
+        List of variant names along with their pourcentage
+    """
+    var_pourc = []
+    for variant in variants:
+        var_pourc.append([variant, round(len(variants[variant])/len(log)*100,2)])
+    var_pourc = sorted(var_pourc, key=lambda x: (x[1], x[0]), reverse=True)
+    return var_pourc
